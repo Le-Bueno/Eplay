@@ -1,31 +1,41 @@
-import {Imagem, Titulo, Preços} from './styles'
-
-import bannerImg from '../../assets/images/banner-homem-aranha.png'
 import Tag from '../Tag'
-import { ButtonLink } from '../button/styles'
 import Button from '../button'
+import { parseToBrl } from '../../utils'
+import { useGetFeaturedGameQuery } from '../../services/api'
 
+import * as S from './styles'
+import Loader from '../Loader'
 
+const Banner = () => {
+  const { data: game } = useGetFeaturedGameQuery()
 
+  if (!game) {
+    return <Loader/>
+  }
 
-const Banner = () => (
-<Imagem style={{ backgroundImage:`url(${bannerImg})`}}>
-<div className="Container">
-  <Tag size="big">Destaque do dia</Tag>
+  return (
+    <S.Image style={{ backgroundImage: `url(${game.media.cover})` }}>
+      <div className="container">
+        <Tag size="big">Destaque do dia</Tag>
 
- <div>
- <Titulo>Marvel&apos;s Spider-Man: Miles Morales PS4 & PS5
-</Titulo>
-<Preços>De <span>R$ 250,00</span> <br/>
-por apenas R$99,90.</Preços>
+        <div>
+          <S.Title>{game.name}</S.Title>
+          <S.Prices>
+            De <span>{parseToBrl(game.prices.old)}</span> <br />
+            por apenas {parseToBrl(game.prices.current)}.
+          </S.Prices>
+        </div>
 
-</div>
+        <Button
+          type="link"
+          to={'/product/${game.id}'}
+          title="Clique aqui para aproveitar esta oferta"
+        >
+          Aproveitar
+        </Button>
+      </div>
+    </S.Image>
+  )
+}
 
-
-
-<Button type="link" to="/produto" title="Clique aqui para aproveitar esta oferta">Aproveitar</Button>
-
-</div>
-  </Imagem>
-)
 export default Banner
