@@ -31,7 +31,7 @@ export const Title = styled.h3`
   display: block;
   margin-top: 16px;
   margin-bottom: 8px;
-  color:  ${colors.white}
+  color: ${colors.white};
 `
 
 export const Description = styled.p`
@@ -39,12 +39,12 @@ export const Description = styled.p`
   line-height: 22px;
   display: block;
   margin-top: 16px;
-  color:  ${colors.white}
+  color: ${colors.white};
 `
 
 export const Infos = styled.div`
   position: absolute;
   top: 16px;
   right: 16px;
-  color:  ${colors.white}
+  color: ${colors.white};
 `

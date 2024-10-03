@@ -1,5 +1,3 @@
-import { Game } from "../pages/Home"
-
 export const parseToBrl = (amount = 0) => {
   return new Intl.NumberFormat('pt-BR', {
     style: 'currency',
@@ -7,15 +5,11 @@ export const parseToBrl = (amount = 0) => {
   }).format(amount)
 }
 
-
 export const getTotalPrice = (items: Game[]) => {
   return items.reduce((accumulator, currentItem) => {
-    if (currentItem.prices.current){
-
-      return ( accumulator += currentItem.prices.current)
-
+    if (currentItem.prices.current) {
+      return (accumulator += currentItem.prices.current)
     }
     return 0
-
   }, 0)
 }

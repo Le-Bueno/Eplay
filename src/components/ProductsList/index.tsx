@@ -1,4 +1,3 @@
-import { Game } from '../../pages/Home'
 import { parseToBrl } from '../../utils'
 import Loader from '../Loader'
 import Product from '../Product'
@@ -12,7 +11,7 @@ export type Props = {
   isLoading: boolean
 }
 
-const ProductList = ({ background, title, games, id, isLoading}: Props) => {
+const ProductList = ({ background, title, games, id, isLoading }: Props) => {
   const getGameTags = (game: Game) => {
     const tags: string[] = []
 
@@ -31,8 +30,8 @@ const ProductList = ({ background, title, games, id, isLoading}: Props) => {
     return tags
   }
 
-  if(isLoading){
-    return <Loader/>
+  if (isLoading) {
+    return <Loader />
   }
 
   return (
@@ -40,19 +39,20 @@ const ProductList = ({ background, title, games, id, isLoading}: Props) => {
       <div className="container">
         <h2>{title}</h2>
         <S.List>
-          {games && games.map((game) => (
-            <li key={game.id}>
-              <Product
-                id={game.id}
-                category={game.details.category}
-                description={game.description}
-                image={game.media.thumbnail}
-                infos={getGameTags(game)}
-                system={game.details.system}
-                title={game.name}
-              />
-            </li>
-          ))}
+          {games &&
+            games.map((game) => (
+              <li key={game.id}>
+                <Product
+                  id={game.id}
+                  category={game.details.category}
+                  description={game.description}
+                  image={game.media.thumbnail}
+                  infos={getGameTags(game)}
+                  system={game.details.system}
+                  title={game.name}
+                />
+              </li>
+            ))}
         </S.List>
       </div>
     </S.Container>

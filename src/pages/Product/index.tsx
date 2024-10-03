@@ -17,7 +17,7 @@ const Product = () => {
   const { data: game } = useGetGameQuery(id)
 
   if (!game) {
-    return <Loader/>
+    return <Loader />
   }
 
   return (
